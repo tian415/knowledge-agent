@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="app-token" content="{{SESSION_TOKEN}}"><meta name="viewport" content="width=device-width,initial-scale=1"><title>维护概览 · 知识中心</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="monitor.css"></head>
+<body class="workspace-app monitor-app">
+<a class="skip-link" href="#workspace-content">跳到当前内容</a>
+<div class="workspace-shell">
+<aside class="workspace-sidebar" aria-label="知识中心导航">
+<a class="workspace-brand" href="#/overview"><span aria-hidden="true" class="brand-mark">知</span><span>知识中心<small>变动可见，细节按需</small></span></a>
+<nav class="monitor-navigation" aria-label="主要分区"><a href="#/overview" data-view-link="overview">维护概览</a><a href="#/review" data-view-link="review">草稿审查</a><a href="#/history" data-view-link="history">保存记录</a><a href="#/sources" data-view-link="sources">来源与运行</a></nav>
+<nav id="secondary-tools" aria-label="其他工具"></nav>
+<div class="sidebar-purpose"><span class="local-indicator"></span>本地知识维护<p>日常阅读在 Obsidian<br>这里查看变动与异常</p></div>
+</aside>
+<main class="workspace-main" id="workspace-content" tabindex="-1">
+<div class="workspace-topline"><span>本地知识维护</span><span id="write-status" class="mode-badge">核对状态中</span><a id="open-obsidian" class="obsidian-link" hidden>在 Obsidian 阅读</a></div>
+<header class="workspace-header">
+<a id="detail-back" class="detail-back" href="#/overview" hidden>返回维护概览</a>
+<div class="monitor-heading"><div><h1 id="view-title" tabindex="-1">维护概览</h1><p id="view-description">笔记发生了什么，哪些地方需要留意。</p></div><button id="reload" class="quiet-button">刷新</button></div>
+<div class="write-banner"><p id="monitor-write-note">正在读取运行状态…</p></div>
+<p id="action-status" role="status" aria-live="polite"></p>
+</header>
+<div id="navigation-message" class="page-state" role="status">正在读取当前记录…</div>
+<section id="monitor-home" data-view="overview">
+<div class="monitor-columns">
+<section class="activity-section" aria-labelledby="activity-title"><div class="section-heading"><h2 id="activity-title">最近笔记变动</h2><span>实际保存记录</span></div><div id="note-activity"></div><a class="text-action" href="#/history">查看全部保存记录</a></section>
+<aside class="attention-section" aria-labelledby="attention-title"><div class="section-heading"><h2 id="attention-title">需要留意</h2><span id="attention-count"></span></div><div id="attention-list"></div></aside>
+</div>
+<section class="overview-source"><div class="section-heading"><h2>来源与处理</h2><a class="text-action" href="#/sources">查看来源与运行</a></div><p id="overview-source-summary"></p></section>
+</section>
+<section id="topic-review" data-view="review" hidden>
+<div id="review-intro" class="section-heading"><p>草稿和预览供按需核对，不是阅读笔记前的必经步骤。</p><span id="topic-count"></span></div>
+<div id="run-results" aria-label="主题审查区"></div>
+</section>
+<section id="history" data-view="history" hidden><div id="save-history"></div>
+<details id="published-search" class="workspace-panel" hidden><summary>查找已保存的知识</summary><form id="published-search-form"><label>关键词 <input name="query" required maxlength="200" placeholder="搜索已保存笔记"></label><button type="submit">搜索</button></form><p id="published-search-status" role="status" aria-live="polite"></p><div id="published-search-results"></div></details>
+</section>
+<section id="sources" data-view="sources" hidden>
+<div id="source-context">
+<div class="monitor-footer-grid"><section class="scope-section"><h2>当前处理范围</h2><div id="scope-summary"></div><p id="usage-summary" class="usage-note">用量读取中…</p><p id="budget-note" class="footnote"></p></section><section class="connection-section"><h2>连接与运行</h2><div id="connection-info"></div></section></div>
+<details class="workspace-panel"><summary>来源配置与手动读取</summary><p id="runtime-status" role="status">正在核对运行范围…</p><div class="actions"><button id="discover-current" hidden>读取项目更新</button></div></details>
+</div><div id="run-coverage"></div>
+</section>
+<p class="monitor-updated" id="monitor-updated"></p>
+</main></div><script type="module" src="runs.js"></script><script type="module" src="runtime.js"></script></body></html>

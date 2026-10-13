@@ -1,0 +1,21 @@
+/* Optional. Home ordering applies to navigation; prose styling is opt-in. */
+.nav-files-container :has(> .nav-file), .nav-folder-children { display: flex; flex-direction: column; }
+.nav-files-container .nav-file:has(> .nav-file-title[data-path^="00-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path^="00-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/00-"]) { order: -1; }
+.pk-note { --file-line-width: 820px; --line-height-normal: 1.75; --h1-size: 1.85em; --h2-size: 1.25em; --h3-size: 1.06em; }
+.pk-note .inline-title { display: none; }
+.pk-note .metadata-container { display: none !important; }
+.pk-note h1 { margin-bottom: .55em; }
+.pk-note h2 { margin-top: 1.6em; padding-bottom: .35em; border-bottom: 1px solid var(--background-modifier-border); }
+.pk-note table { width: 100%; font-size: .94em; }
+.pk-note th, .pk-note td { padding: .6em .8em; }
+.pk-note img { border-radius: 10px; max-width: 100%; height: auto; }
+.pk-note .callout[data-callout="info"] { font-size: .88em; }
+
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/01-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/02-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/03-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/04-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/05-"]),
+.nav-folder-children > .nav-file:has(> .nav-file-title[data-path*="/06-"]) { order: -1; }

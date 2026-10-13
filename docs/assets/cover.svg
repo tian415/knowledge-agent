@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+<title id="title">Knowledge Agent</title><desc id="desc">From conversation to evidence, review, and reusable notes. Local-first knowledge workflow.</desc>
+<rect width="1280" height="320" rx="20" fill="#f5f2eb"/>
+<rect x="34" y="34" width="1212" height="252" rx="12" fill="none" stroke="#d9d3c7"/>
+<rect x="65" y="68" width="5" height="166" fill="#ca5c35"/>
+<text x="90" y="87" font-family="Arial,sans-serif" font-size="13" letter-spacing="3" fill="#736957">LOCAL-FIRST / REVIEWED WRITES</text>
+<text x="88" y="142" font-family="Arial,sans-serif" font-size="43" font-weight="700" fill="#213d35">Knowledge Agent</text>
+<text x="90" y="181" font-family="Arial,sans-serif" font-size="20" fill="#5c645d">Conversations become knowledge.</text>
+<text x="90" y="215" font-family="Arial,sans-serif" font-size="16" fill="#5c645d">Keep the evidence. Review the change.</text>
+<path d="M684 146H1148" stroke="#b9c5b8" stroke-width="2"/>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<circle cx="720" cy="146" r="27" fill="#e6e8dd" stroke="#b9c5b8"/><text x="720" y="152" font-size="16" fill="#213d35">01</text>
+<circle cx="914" cy="146" r="27" fill="#213d35"/><text x="914" y="152" font-size="16" fill="#fff">02</text>
+<circle cx="1108" cy="146" r="27" fill="#ca5c35"/><text x="1108" y="152" font-size="16" fill="#fff">03</text>
+<text x="720" y="205" font-size="16" fill="#213d35">Source</text><text x="914" y="205" font-size="16" fill="#213d35">Review</text><text x="1108" y="205" font-size="16" fill="#213d35">Markdown</text>
+<text x="720" y="230" font-size="12" fill="#736957">Versioned evidence</text><text x="914" y="230" font-size="12" fill="#736957">Explicit approval</text><text x="1108" y="230" font-size="12" fill="#736957">Controlled updates</text>
+</g></svg>

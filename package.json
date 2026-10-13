@@ -1,0 +1,34 @@
+{
+  "name": "knowledge-agent",
+  "version": "0.1.0",
+  "description": "Local-first, source-traceable conversation knowledge workflow with reviewed Markdown writes",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test tests/intake/*.test.mjs tests/apply/*.test.mjs tests/workspace/*.test.mjs tests/app/*.test.mjs tests/capture/*.test.mjs",
+    "test:intake": "node --test tests/intake/*.test.mjs",
+    "intake": "node scripts/material-intake.mjs",
+    "start": "node scripts/demo-knowledge.mjs",
+    "demo": "node scripts/start-app.mjs --demo",
+    "test:app": "node --test tests/app/*.test.mjs tests/apply/*.test.mjs tests/workspace/*.test.mjs",
+    "verify:acceptance": "node scripts/verify-intake-acceptance.mjs",
+    "test:capture": "node --test tests/capture/*.test.mjs",
+    "capture:prototype": "node scripts/capture-prototype.mjs",
+    "knowledge": "node scripts/knowledge-workspace.mjs",
+    "demo:product": "node scripts/demo-knowledge.mjs",
+    "demo:executor": "node scripts/offline-executor-demo.mjs",
+    "demo:search": "node scripts/demo-search.mjs",
+    "verify:search": "node scripts/verify-published-search.mjs",
+    "intake:serve": "node scripts/start-app.mjs"
+  },
+  "keywords": [],
+  "author": "tian415",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@openai/codex-sdk": "^0.153.4"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  }
+}

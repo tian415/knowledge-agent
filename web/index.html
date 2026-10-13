@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="app-token" content="{{SESSION_TOKEN}}"><title>工作台 · 知识中心</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+<a class="skip-link" href="#workbench-main">跳到当前内容</a>
+<div class="workspace-shell">
+<aside class="sidebar" aria-label="知识中心导航">
+ <a class="brand" href="#/overview"><span class="brand-mark" aria-hidden="true">知</span><span>知识中心<small>本地知识维护</small></span></a>
+ <nav id="capture-navigation" aria-label="知识维护">{{CAPTURE_NAV}}</nav>
+ <div class="tool-heading">工作台工具</div>
+ <nav id="workbench-navigation" aria-label="工作台工具">
+  <a href="#/overview">今日工作台</a><a href="#/actions">行动与建议</a><a href="#/projects">项目与学习</a><a href="#/materials">材料记录</a><a href="#/intake">提交材料</a><a href="#/history">材料保存记录</a>
+ </nav>
+ <div class="sidebar-bottom"><span class="dot" aria-hidden="true"></span>仅本机访问<p>日常阅读在 Obsidian<br>这里查看变动与按需处理</p><small id="mode-label">连接中</small></div>
+</aside>
+<main id="workbench-main" tabindex="-1">
+ <div class="topline"><span>知识中心 / 工作台</span><span id="today"></span></div>
+ <header class="page-heading"><h1 id="page-title" tabindex="-1">今日工作台</h1><p id="page-description">查看已确认的行动，按需核对材料和项目阶段。</p></header>
+ <p id="workbench-load-status" class="notice" role="status">正在读取工作台状态…</p>
+ <section id="overview" data-workbench-view>
+  <div id="notice" class="notice" hidden></div>
+  <div class="stats" id="stats"></div>
+  <div class="section-heading"><h2>本次关注</h2><span class="muted">最多 3 项已确认行动</span></div>
+  <div id="focus" class="card-grid"></div>
+  <a id="overview-primary" class="button secondary" href="#/intake">提交一份材料</a>
+ </section>
+ <section id="intake" class="panel" data-workbench-view hidden>
+  <div class="section-heading"><h2>保留材料原文</h2><button id="demo-fill" class="button secondary" hidden>填入演示材料</button></div>
+  <form id="material-form">
+   <div class="row"><label>材料标题<input name="source_title" placeholder="例如：一次工程取舍，或一段学习讨论" maxlength="300"></label><label>来源<select name="source_type"><option value="text">原始文本</option><option value="chatgpt">ChatGPT</option><option value="codex">Codex</option></select></label></div>
+   <label>原始内容<textarea name="raw_content" rows="7" required placeholder="直接粘贴原文，不必提前清洗或整理。"></textarea></label>
+   <div class="row"><label class="file-label">或导入文本文件<input id="material-file" type="file" accept=".txt,.md,.markdown,text/plain,text/markdown"></label><label>来源链接（可选）<input name="source_url" type="url" placeholder="https://…"></label></div>
+   <p id="file-status" class="muted" role="status"></p>
+   <div class="form-footer"><small id="outbound-note">提交会把原文及必要项目上下文发送给已配置的 DeepSeek；先生成预览，知识保存需另行确认。</small><button class="button primary" type="submit">整理并预览</button></div>
+  </form>
+ </section>
+ <section id="materials" data-workbench-view hidden><div id="material-list" class="list"></div></section>
+ <section id="material-detail" data-workbench-view hidden><a id="detail-back" class="back-link" href="#/materials">返回材料记录</a><div id="review" class="panel"></div></section>
+ <section id="actions" data-workbench-view hidden>
+  <p id="coverage" class="muted"></p>
+  <div class="two-columns"><div><h2>已确认与待确认</h2><div id="action-list" class="list"></div></div><div><h2>值得考虑</h2><div id="suggestions" class="list"></div></div></div>
+  <details class="panel compact"><summary>已完成、暂缓与忽略的事项</summary><div id="action-archive" class="list"></div></details>
+  <details class="panel compact"><summary>导入已有清单快照</summary><p class="muted">只对比本次快照，不回写外部工具。导入后可选择关联中心行动，标题相似不会自动合并。</p>
+   <form id="snapshot-form"><div class="row"><label>来源名称<input name="source" required placeholder="例如：我的待办清单"></label><label>快照时间<input name="updated_at" type="datetime-local" required></label></div><label>清单内容<textarea name="items" rows="4" required placeholder="每行一项，也支持 Markdown 清单：&#10;- [ ] 核验材料&#10;- [x] 整理结论"></textarea></label><p class="muted">文本项使用中心本地 ID，不冒充外部工具 ID。已有结构化快照也可直接粘贴 JSON。</p><button class="button secondary">导入快照</button></form>
+  </details>
+  <div id="snapshot-list" class="list"></div>
+ </section>
+ <section id="projects" data-workbench-view hidden>
+  <div id="project-list" class="card-grid"></div>
+  <details class="panel compact"><summary>确认项目或学习阶段</summary><form id="project-form"><div class="row"><label>项目或学习目标名称<input name="id" required></label><label>类型<select name="kind"><option value="project">项目</option><option value="learning">学习</option></select></label></div><label>目标<input name="goal" required></label><div class="row"><label>已确认阶段<input name="stage" required placeholder="例如：已实践，待新场景复用"></label><label>当前阻碍<input name="blocker"></label></div><label>下一步<input name="next_step"></label><label>支持这一判断的证据<textarea name="evidence" rows="2" required></textarea></label><button class="button secondary">确认并保存状态</button></form></details>
+ </section>
+ <section id="history" data-workbench-view hidden><div id="plan-list" class="list"></div></section>
+ <section id="route-missing" class="empty" data-workbench-view hidden><h2>这个工作台分区暂不可用</h2><p>地址可能已改变，或当前运行模式未启用这项功能。</p><a class="button secondary" href="#/overview">返回今日工作台</a></section>
+ <footer>正式知识留在 Obsidian，行动与项目状态按需核对。</footer>
+ <noscript><p class="notice">启用 JavaScript 后可切换分区与读取工作台记录。</p></noscript>
+</main>
+</div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="plan-dialog"><form method="dialog"><button class="close" aria-label="关闭">×</button></form><h2>核对本次知识变更</h2><p class="muted">确认后才会写入下列文件；如果文件已被你修改，本次操作会拒绝覆盖。</p><div id="plan-preview"></div><button id="confirm-plan" class="button primary">确认应用以上变更</button></dialog>
+</body></html>
