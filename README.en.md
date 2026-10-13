@@ -32,6 +32,13 @@ A one-off summary is easy to copy. Maintaining it across later conversations is 
 
 This project separates semantic proposals from execution. The assistant proposes content; code checks source versions, exact evidence, preview hashes and file state; the user approves each write. It is for personal workflows that need traceability and incremental maintenance. An ordinary chat summary is simpler for disposable notes.
 
+## From conversation to note
+
+1. **Read conversations** within the authorized scope and record source and message versions.
+2. **Prepare a draft**: the assistant extracts topics; code checks quoted evidence and source versions.
+3. **Review changes**: inspect the text, sources and proposed file changes, then decide whether to save.
+4. **Save and restore**: confirmation writes Markdown and preserves a record. Restoration checks the file again to avoid overwriting later manual edits.
+
 ## What is implemented
 
 - Versioned conversation sources, with explicit partial-history boundaries.
